@@ -1,0 +1,88 @@
+<div class="archive-section">
+    <h2 class="section-title">
+        <% if (page.category) { %>
+            Category: <%= page.category %>
+        <% } else if (page.tag) { %>
+            Tag: <%= page.tag %>
+        <% } else if (page.year) { %>
+            Archive: <%= page.year %>
+            <% if (page.month) { %>
+                / <%= page.month %>
+            <% } %>
+        <% } else { %>
+            Archives
+        <% } %>
+    </h2>
+    
+    <% if (page.posts && page.posts.length > 0) { %>
+        <div class="archive-list">
+            <% var lastYear = null; %>
+            <% page.posts.each(function(post) { %>
+                <% var currentYear = date(post.date, 'YYYY'); %>
+                <% if (currentYear !== lastYear) { %>
+                    <% if (lastYear !== null) { %>
+                        </div>
+                    <% } %>
+                    <div class="archive-year">
+                        <h3 class="year-title"><%= currentYear %></h3>
+                        <div class="year-posts">
+                    <% lastYear = currentYear; %>
+                <% } %>
+                
+                <article class="archive-post">
+                    <div class="archive-post-date">
+                        <%= date(post.date, 'MMM DD') %>
+                    </div>
+                    
+                    <div class="archive-post-content">
+                        <h4 class="archive-post-title">
+                            <a href="<%= url_for(post.path) %>" class="archive-post-link">
+                                <%= post.title %>
+                            </a>
+                        </h4>
+                        
+                        <% if (post.categories && post.categories.length > 0) { %>
+                            <div class="archive-post-meta">
+                                <% post.categories.each(function(category) { %>
+                                    <a href="<%= url_for(category.path) %>" class="archive-category-link">
+                                        <%= category.name %>
+                                    </a>
+                                <% }); %>
+                            </div>
+                        <% } %>
+                    </div>
+                </article>
+            <% }); %>
+            
+            <% if (lastYear !== null) { %>
+                        </div>
+                    </div>
+            <% } %>
+        </div>
+    <% } else { %>
+        <div class="no-posts">
+            <p>No posts found.</p>
+        </div>
+    <% } %>
+    
+    <!-- Pagination -->
+    <% if (page.total > 1) { %>
+        <nav class="pagination">
+            <% if (page.prev) { %>
+                <a href="<%= url_for(page.prev_link) %>" class="pagination-link prev">
+                    ← Previous
+                </a>
+            <% } %>
+            
+            <span class="pagination-info">
+                Page <%= page.current %> of <%= page.total %>
+            </span>
+            
+            <% if (page.next) { %>
+                <a href="<%= url_for(page.next_link) %>" class="pagination-link next">
+                    Next →
+                </a>
+            <% } %>
+        </nav>
+    <% } %>
+</div>

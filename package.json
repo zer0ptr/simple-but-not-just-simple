@@ -1,0 +1,41 @@
+{
+  "name": "simple-but-not-just-simple",
+  "version": "1.0.0",
+  "description": "A simple but elegant Hexo theme inspired by deebato's blog",
+  "main": "index.js",
+  "keywords": [
+    "hexo",
+    "theme",
+    "blog",
+    "simple",
+    "elegant",
+    "minimal",
+    "deebato"
+  ],
+  "author": {
+    "name": "zer0ptr",
+    "email": "iszhenghailin@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zer0ptr/simple-but-not-just-simple.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zer0ptr/simple-but-not-just-simple/issues"
+  },
+  "homepage": "https://github.com/zer0ptr/simple-but-not-just-simple#readme",
+  "engines": {
+    "node": ">=12.0.0",
+    "hexo": ">=5.0.0"
+  },
+  "devDependencies": {
+    "hexo": "^6.0.0"
+  },
+  "peerDependencies": {
+    "hexo": ">=5.0.0"
+  },
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  }
+}

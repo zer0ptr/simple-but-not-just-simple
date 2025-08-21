@@ -1,0 +1,100 @@
+<article class="post">
+    <!-- Post Header -->
+    <header class="post-header">
+        <% if (page.categories && page.categories.length > 0) { %>
+            <div class="post-meta">
+                <% page.categories.each(function(category) { %>
+                    <a href="<%= url_for(category.path) %>" class="category-link">
+                        <%= category.name %>
+                    </a>
+                <% }); %>
+            </div>
+        <% } %>
+        
+        <h1 class="post-title"><%= page.title %></h1>
+        
+        <div class="post-info">
+            <time class="post-date" datetime="<%= date_xml(page.date) %>">
+                <%= date(page.date, 'MMMM DD, YYYY') %>
+            </time>
+            
+            <% if (theme.misc?.word_count && page.content) { %>
+                <span class="post-word-count">
+                    <%= strip_html(page.content).replace(/\s+/g, ' ').split(' ').length %> words
+                </span>
+            <% } %>
+            
+            <% if (theme.misc?.reading_time && page.content) { %>
+                <span class="post-reading-time">
+                    <%= Math.ceil(strip_html(page.content).replace(/\s+/g, ' ').split(' ').length / 200) %> min read
+                </span>
+            <% } %>
+        </div>
+        
+        <% if (page.tags && page.tags.length > 0) { %>
+            <div class="post-tags">
+                <% page.tags.each(function(tag) { %>
+                    <a href="<%= url_for(tag.path) %>" class="tag-link">
+                        #<%= tag.name %>
+                    </a>
+                <% }); %>
+            </div>
+        <% } %>
+    </header>
+    
+    <!-- Post Content -->
+    <div class="post-content">
+        <%- page.content %>
+    </div>
+    
+    <!-- Post Footer -->
+    <footer class="post-footer">
+        <% if (theme.misc?.updated_time && page.updated && +page.updated !== +page.date) { %>
+            <div class="post-updated">
+                <small>Last updated: <%= date(page.updated, 'MMMM DD, YYYY') %></small>
+            </div>
+        <% } %>
+        
+        <!-- Post Navigation -->
+        <nav class="post-nav">
+            <% if (page.prev) { %>
+                <div class="post-nav-item post-nav-prev">
+                    <a href="<%= url_for(page.prev.path) %>" class="post-nav-link">
+                        <span class="post-nav-label">← Previous</span>
+                        <span class="post-nav-title"><%= page.prev.title %></span>
+                    </a>
+                </div>
+            <% } %>
+            
+            <% if (page.next) { %>
+                <div class="post-nav-item post-nav-next">
+                    <a href="<%= url_for(page.next.path) %>" class="post-nav-link">
+                        <span class="post-nav-label">Next →</span>
+                        <span class="post-nav-title"><%= page.next.title %></span>
+                    </a>
+                </div>
+            <% } %>
+        </nav>
+    </footer>
+</article>
+
+<!-- Comments Section -->
+<% if (theme.comments?.enable) { %>
+    <section class="comments">
+        <% if (theme.comments.provider === 'disqus' && theme.comments.disqus_shortname) { %>
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    this.page.url = '<%= page.permalink %>';
+                    this.page.identifier = '<%= page.path %>';
+                };
+                (function() {
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://<%= theme.comments.disqus_shortname %>.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+        <% } %>
+    </section>
+<% } %>

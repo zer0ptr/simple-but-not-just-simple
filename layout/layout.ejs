@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'en' %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <% if (page.title) { %>
+            <%= page.title %> | <%= config.title %>
+        <% } else { %>
+            <%= config.title %>
+            <% if (config.subtitle) { %> - <%= config.subtitle %><% } %>
+        <% } %>
+    </title>
+    
+    <!-- Meta tags -->
+    <meta name="description" content="<%= page.description || config.description || '' %>">
+    <meta name="author" content="<%= config.author || '' %>">
+    
+    <!-- CSS -->
+    <%- css('css/style') %>
+    
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    
+    <!-- MathJax for math formulas -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Search Script -->
+    <%- js('js/search') %>
+</head>
+<body>
+    <!-- 加载指示器 -->
+    <div class="loading-indicator" id="loadingIndicator"></div>
+    <!-- Top Navigation Bar -->
+    <% if (theme.menu) { %>
+    <nav class="top-navigation">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="<%= url_for('/') %>" class="nav-brand-link">
+                    <%= theme.site?.title || config.title %>
+                </a>
+            </div>
+            <ul class="top-nav-list">
+                <% for (let name in theme.menu) { %>
+                    <li class="top-nav-item">
+                        <a href="<%= url_for(theme.menu[name]) %>" class="top-nav-link">
+                            <%= name %>
+                        </a>
+                    </li>
+                <% } %>
+                <li class="top-nav-item">
+                    <a href="https://github.com" class="top-nav-link" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="top-nav-item">
+                    <a href="#" class="top-nav-link search-toggle">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <% } %>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="site-title">
+                    <a href="<%= url_for('/') %>">
+                        <%= theme.site?.title || config.title %>
+                    </a>
+                </h1>
+                <% if (theme.site?.subtitle || config.subtitle) { %>
+                    <p class="site-subtitle">
+                        <%= theme.site?.subtitle || config.subtitle %>
+                    </p>
+                <% } %>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content page-transition" id="mainContent">
+            <%- body %>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %>. All rights reserved.</p>
+                <% if (theme.social) { %>
+                    <div class="social-links">
+                        <% for (let name in theme.social) { %>
+                            <a href="<%= theme.social[name] %>" target="_blank" rel="noopener" class="social-link">
+                                <%= name %>
+                            </a>
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Highlight.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            hljs.highlightAll();
+        });
+        
+        // 如果DOM已经加载完成，立即执行
+        if (document.readyState !== 'loading') {
+            hljs.highlightAll();
+        }
+    </script>
+    
+    <!-- JavaScript -->
+    <%- js('js/script') %>
+</body>
+</html>

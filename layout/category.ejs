@@ -1,0 +1,45 @@
+<div class="category-section">
+    <h2 class="section-title">Categories</h2>
+    
+    <% if (site.categories && site.categories.length > 0) { %>
+        <div class="categories-list">
+            <% site.categories.each(function(category) { %>
+                <div class="category-item">
+                    <h3 class="category-name">
+                        <a href="<%= url_for(category.path) %>" class="category-link">
+                            <%= category.name %>
+                        </a>
+                        <span class="category-count">(<%= category.posts.length %>)</span>
+                    </h3>
+                    
+                    <div class="category-posts">
+                        <% category.posts.sort('date', -1).limit(5).each(function(post) { %>
+                            <article class="category-post">
+                                <div class="category-post-date">
+                                    <%= date(post.date, 'MMM DD, YYYY') %>
+                                </div>
+                                <h4 class="category-post-title">
+                                    <a href="<%= url_for(post.path) %>" class="category-post-link">
+                                        <%= post.title %>
+                                    </a>
+                                </h4>
+                            </article>
+                        <% }); %>
+                        
+                        <% if (category.posts.length > 5) { %>
+                            <div class="category-more">
+                                <a href="<%= url_for(category.path) %>" class="category-more-link">
+                                    View all <%= category.posts.length %> posts →
+                                </a>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <div class="no-categories">
+            <p>No categories found.</p>
+        </div>
+    <% } %>
+</div>

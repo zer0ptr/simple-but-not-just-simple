@@ -1,0 +1,62 @@
+# Hexo主题配置文件
+# 主题名称
+name: simple-but-not-just-simple
+
+
+# 网站信息
+site:
+  title: "zer0ptr's blog"
+  subtitle: "Walking on my way🧐."
+  author: "zer0ptr"
+  description: "A simple but elegant blog theme"
+
+# 导航菜单
+menu:
+  Archives: /archives
+  Categories: /categories
+  Tags: /tags
+  About: /about
+
+# 社交链接
+social:
+  # GitHub: https://github.com/username
+  # Twitter: https://twitter.com/username
+  # Email: mailto:your-email@example.com
+
+# 文章设置
+post:
+  # 显示文章摘要
+  excerpt: true
+  # 摘要长度
+  excerpt_length: 200
+  # 显示阅读更多按钮
+  read_more: true
+
+# 分页设置
+pagination:
+  per_page: 10
+
+# 代码高亮
+highlight:
+  enable: true
+  theme: github
+
+# 评论系统（可选）
+comments:
+  enable: false
+  # provider: disqus
+  # disqus_shortname: your-disqus-shortname
+
+# 分析工具（可选）
+analytics:
+  google_analytics: 
+  baidu_analytics: 
+
+# 其他设置
+misc:
+  # 显示文章字数统计
+  word_count: true
+  # 显示阅读时间
+  reading_time: true
+  # 显示文章更新时间
+  updated_time: true

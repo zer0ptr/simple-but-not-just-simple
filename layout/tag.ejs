@@ -1,0 +1,63 @@
+<div class="tag-section">
+    <h2 class="section-title">Tags</h2>
+    
+    <% if (site.tags && site.tags.length > 0) { %>
+        <div class="tags-cloud">
+            <% site.tags.each(function(tag) { %>
+                <a href="<%= url_for(tag.path) %>" class="tag-cloud-item" data-count="<%= tag.posts.length %>">
+                    #<%= tag.name %>
+                    <span class="tag-count">(<%= tag.posts.length %>)</span>
+                </a>
+            <% }); %>
+        </div>
+        
+        <div class="tags-list">
+            <% site.tags.each(function(tag) { %>
+                <div class="tag-item">
+                    <h3 class="tag-name">
+                        <a href="<%= url_for(tag.path) %>" class="tag-link">
+                            #<%= tag.name %>
+                        </a>
+                        <span class="tag-count">(<%= tag.posts.length %>)</span>
+                    </h3>
+                    
+                    <div class="tag-posts">
+                        <% tag.posts.sort('date', -1).limit(5).each(function(post) { %>
+                            <article class="tag-post">
+                                <div class="tag-post-date">
+                                    <%= date(post.date, 'MMM DD, YYYY') %>
+                                </div>
+                                <h4 class="tag-post-title">
+                                    <a href="<%= url_for(post.path) %>" class="tag-post-link">
+                                        <%= post.title %>
+                                    </a>
+                                </h4>
+                                <% if (post.categories && post.categories.length > 0) { %>
+                                    <div class="tag-post-category">
+                                        <% post.categories.each(function(category) { %>
+                                            <a href="<%= url_for(category.path) %>" class="tag-post-category-link">
+                                                <%= category.name %>
+                                            </a>
+                                        <% }); %>
+                                    </div>
+                                <% } %>
+                            </article>
+                        <% }); %>
+                        
+                        <% if (tag.posts.length > 5) { %>
+                            <div class="tag-more">
+                                <a href="<%= url_for(tag.path) %>" class="tag-more-link">
+                                    View all <%= tag.posts.length %> posts →
+                                </a>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <div class="no-tags">
+            <p>No tags found.</p>
+        </div>
+    <% } %>
+</div>

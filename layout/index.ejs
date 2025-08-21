@@ -1,0 +1,63 @@
+<div class="posts-section">
+    <h2 class="section-title">Latest Posts</h2>
+    
+    <div class="posts-list">
+        <% page.posts.each(function(post) { %>
+            <article class="post-item">
+                <div class="post-meta">
+                    <% if (post.categories && post.categories.length > 0) { %>
+                        <span class="post-category">
+                            <% post.categories.each(function(category) { %>
+                                <a href="<%= url_for(category.path) %>" class="category-link">
+                                    <%= category.name %>
+                                </a>
+                            <% }); %>
+                        </span>
+                    <% } %>
+                </div>
+                
+                <h3 class="post-title">
+                    <a href="<%= url_for(post.path) %>" class="post-link">
+                        <%= post.title %>
+                    </a>
+                </h3>
+                
+                <div class="post-date">
+                    <%= date(post.date, 'MMMM DD, YYYY') %>
+                </div>
+                
+                <% if (post.excerpt && theme.post?.excerpt) { %>
+                    <div class="post-excerpt">
+                        <%- strip_html(post.excerpt) %>
+                        <% if (theme.post?.read_more) { %>
+                            <a href="<%= url_for(post.path) %>" class="read-more">
+                                Read more →
+                            </a>
+                        <% } %>
+                    </div>
+                <% } %>
+            </article>
+        <% }); %>
+    </div>
+    
+    <!-- Pagination -->
+    <% if (page.total > 1) { %>
+        <nav class="pagination">
+            <% if (page.prev) { %>
+                <a href="<%= url_for(page.prev_link) %>" class="pagination-link prev">
+                    ← Previous
+                </a>
+            <% } %>
+            
+            <span class="pagination-info">
+                Page <%= page.current %> of <%= page.total %>
+            </span>
+            
+            <% if (page.next) { %>
+                <a href="<%= url_for(page.next_link) %>" class="pagination-link next">
+                    Next →
+                </a>
+            <% } %>
+        </nav>
+    <% } %>
+</div>
