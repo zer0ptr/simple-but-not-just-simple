@@ -55,8 +55,8 @@ analytics:
 # 其他设置
 misc:
   # 显示文章字数统计
-  word_count: true
+  word_count: false
   # 显示阅读时间
-  reading_time: true
+  reading_time: false
   # 显示文章更新时间
   updated_time: true

@@ -1,207 +1,208 @@
 # Simple But Not Just Simple
 
-A simple but elegant Hexo theme inspired by [deebato's blog](https://d33b4t0.com/). This theme focuses on clean typography, minimal design, and excellent readability.
+一个简洁而优雅的 Hexo 主题，灵感来源于 [deebato's blog](https://d33b4t0.com/)。这个主题专注于清晰的排版、极简的设计和出色的阅读体验。
 
-## Features
+## 特色功能
 
-- 🎨 Clean and minimal design
-- 📱 Fully responsive layout
-- 🚀 Fast loading and optimized performance
-- 📝 Excellent typography and readability
-- 🏷️ Support for categories and tags
-- 💬 Comment system support (Disqus)
-- 📊 Analytics support (Google Analytics, Baidu Analytics)
-- 🔍 SEO optimized
-- 🌙 Reading progress indicator
-- 📋 Code copy functionality
-- ⬆️ Back to top button
-- 🎯 Smooth scrolling
+- 🎨 简洁优雅的设计风格
+- 📱 完美适配各种设备
+- 🚀 快速加载，性能优化
+- 📝 舒适的阅读体验和排版
+- 🏷️ 支持分类和标签
+- 💬 评论系统支持 (Disqus)
+- 📊 数据统计支持 (Google Analytics, 百度统计)
+- 🔍 SEO 友好
+- 🌙 阅读进度指示器
+- 📋 代码一键复制
+- ⬆️ 返回顶部按钮
+- 🎯 平滑滚动效果
 
-## Demo
+## 在线预览
 
-You can see a live demo at [your-demo-site.com](https://your-demo-site.com)
+你可以在这里查看效果：[your-demo-site.com](https://your-demo-site.com)
 
-## Installation
+## 安装方法
 
-### Method 1: Git Clone
+### 方法一：Git 克隆
 
 ```bash
 cd your-hexo-site
 git clone https://github.com/zer0ptr/simple-but-not-just-simple.git themes/simple-but-not-just-simple
 ```
 
-### Method 2: Download
+### 方法二：直接下载
 
-Download the theme files and extract them to `themes/simple-but-not-just-simple` directory.
+下载主题文件并解压到 `themes/simple-but-not-just-simple` 目录。
 
-## Configuration
+## 配置说明
 
-### 1. Enable the theme
+### 1. 启用主题
 
-Modify your site's `_config.yml`:
+修改站点根目录的 `_config.yml` 文件：
 
 ```yaml
 theme: simple-but-not-just-simple
 ```
 
-### 2. Theme Configuration
+### 2. 主题配置
 
-Copy the theme's `_config.yml` to your site root and customize it:
+将主题目录下的 `_config.yml` 复制到站点根目录并根据需要修改：
 
 ```yaml
-# Site information
+# 站点信息
 site:
-  title: "Your Blog Title"
-  subtitle: "Your blog subtitle"
-  author: "Your Name"
-  description: "Your blog description"
+  title: "你的博客标题"
+  subtitle: "博客副标题"
+  author: "你的名字"
+  description: "博客描述"
 
-# Navigation menu
+# 导航菜单
 menu:
-  Home: /
-  Archives: /archives
-  Categories: /categories
-  Tags: /tags
-  About: /about
+  首页: /
+  归档: /archives
+  分类: /categories
+  标签: /tags
+  关于: /about
 
-# Social links
+# 社交链接
 social:
-  GitHub: https://github.com/zer0ptr
-  Twitter: https://twitter.com/zer0ptr
-  Email: mailto:iszhenghailin@gmail.com
+  GitHub: https://github.com/你的用户名
+  Twitter: https://twitter.com/你的用户名
+  Email: mailto:你的邮箱@example.com
 
-# Post settings
+# 文章设置
 post:
   excerpt: true
   excerpt_length: 200
   read_more: true
 
-# Comments (optional)
+# 评论系统（可选）
 comments:
   enable: true
   provider: disqus
-  disqus_shortname: your-disqus-shortname
+  disqus_shortname: 你的-disqus-shortname
 
-# Analytics (optional)
+# 数据统计（可选）
 analytics:
   google_analytics: UA-XXXXXXXX-X
-  baidu_analytics: your-baidu-id
+  baidu_analytics: 你的百度统计ID
 
-# Misc settings
+# 其他设置
 misc:
   word_count: true
   reading_time: true
   updated_time: true
 ```
 
-### 3. Create Pages
+### 3. 创建页面
 
-Create necessary pages:
+创建必要的页面：
 
 ```bash
-# Create about page
+# 创建关于页面
 hexo new page about
 
-# Create categories page
+# 创建分类页面
 hexo new page categories
 echo 'type: categories' >> source/categories/index.md
 
-# Create tags page
+# 创建标签页面
 hexo new page tags
 echo 'type: tags' >> source/tags/index.md
 ```
 
-## Writing Posts
+## 写作指南
 
-### Front Matter
+### 文章头部信息
 
-Use the following front matter in your posts:
+在文章中使用以下格式的头部信息：
 
 ```yaml
 ---
-title: Your Post Title
+title: 你的文章标题
 date: 2024-01-01 12:00:00
 categories:
-  - Category Name
+  - 分类名称
 tags:
-  - tag1
-  - tag2
-description: Post description for SEO
+  - 标签1
+  - 标签2
+description: 文章描述，用于SEO优化
 ---
 ```
 
-### Post Excerpt
+### 文章摘要
 
-You can define post excerpts in two ways:
+你可以通过两种方式设置文章摘要：
 
-1. Use `<!-- more -->` tag in your post content
-2. Set `excerpt` in front matter
+1. 在文章内容中使用 `<!-- more -->` 标签
+2. 在头部信息中设置 `excerpt` 字段
 
-## Customization
+## 个性化定制
 
-### Custom CSS
+### 自定义样式
 
-Create `source/css/custom.css` in your site root to add custom styles:
+在站点根目录创建 `source/css/custom.css` 文件来添加自定义样式：
 
 ```css
-/* Your custom styles */
+/* 你的自定义样式 */
 .custom-class {
-    /* Your styles here */
+    /* 在这里写你的样式 */
 }
 ```
 
-### Custom JavaScript
+### 自定义脚本
 
-Create `source/js/custom.js` in your site root to add custom JavaScript:
+在站点根目录创建 `source/js/custom.js` 文件来添加自定义JavaScript：
 
 ```javascript
-// Your custom JavaScript
-console.log('Custom JS loaded');
+// 你的自定义JavaScript代码
+console.log('自定义脚本已加载');
 ```
 
-## Browser Support
+## 浏览器支持
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+- Chrome (最新版)
+- Firefox (最新版)
+- Safari (最新版)
+- Edge (最新版)
 - IE 11+
 
-## Contributing
+## 参与贡献
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+欢迎大家一起完善这个主题！
 
-## License
+1. Fork 这个仓库
+2. 创建你的功能分支 (`git checkout -b feature/amazing-feature`)
+3. 提交你的修改 (`git commit -m 'Add some amazing feature'`)
+4. 推送到分支 (`git push origin feature/amazing-feature`)
+5. 提交 Pull Request
 
-This theme is released under the [MIT License](LICENSE).
+## 开源协议
 
-## Credits
+本主题基于 [MIT License](LICENSE) 开源。
 
-- Inspired by [deebato's blog](https://d33b4t0.com/)
-- Built for [Hexo](https://hexo.io/)
-- Typography inspired by modern web design principles
+## 致谢
 
-## Changelog
+- 设计灵感来自 [deebato's blog](https://d33b4t0.com/)
+- 为 [Hexo](https://hexo.io/) 静态博客框架而生
+
+
+## 更新日志
 
 ### v1.0.0
-- Initial release
-- Basic theme functionality
-- Responsive design
-- Comment system support
-- Analytics integration
+- 首次发布
+- 基础主题功能
+- 响应式设计
 
-## Support
+## 技术支持
 
-If you have any questions or issues, please:
+如果你遇到任何问题或有疑问，欢迎：
 
-1. Check the [documentation](README.md)
-2. Search [existing issues](https://github.com/zer0ptr/simple-but-not-just-simple/issues)
-3. Create a [new issue](https://github.com/zer0ptr/simple-but-not-just-simple/issues/new)
+1. 查看这份 [使用文档](README.md)
+2. 搜索已有的 [问题反馈](https://github.com/zer0ptr/simple-but-not-just-simple/issues)
+3. 如果找不到解决方案，可以 [提交新问题](https://github.com/zer0ptr/simple-but-not-just-simple/issues/new)
+4. 参与我们的 [社区讨论](https://github.com/zer0ptr/simple-but-not-just-simple/discussions)
 
 ---
 
-Made with ❤️ for the Hexo community
+**祝你用 Simple But Not Just Simple 写博客愉快！🎉**
