@@ -1,16 +1,19 @@
 {
-  "name": "simple-but-not-just-simple",
+  "name": "hexo-theme-simple-but-not-just-simple",
   "version": "1.0.0",
-  "description": "A simple but elegant Hexo theme inspired by deebato's blog",
+  "description": "一个简洁而优雅的Hexo主题，专注于清晰的排版、极简设计和出色的阅读体验",
   "main": "index.js",
   "keywords": [
     "hexo",
+    "hexo-theme",
     "theme",
     "blog",
     "simple",
     "elegant",
     "minimal",
-    "deebato"
+    "clean",
+    "responsive",
+    "typography"
   ],
   "author": {
     "name": "zer0ptr",
@@ -36,6 +39,15 @@
     "hexo": ">=5.0.0"
   },
   "scripts": {
-    "test": "echo \"No tests specified\" && exit 0"
-  }
+    "test": "echo \"No tests specified\" && exit 0",
+    "lint": "echo \"Linting theme files\"",
+    "build": "echo \"Building theme assets\""
+  },
+  "files": [
+    "layout/",
+    "source/",
+    "_config.yml",
+    "README.md",
+    "LICENSE"
+  ]
 }

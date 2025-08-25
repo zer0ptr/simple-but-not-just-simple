@@ -8,10 +8,11 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+    color: var(--text-color);
+    background-color: var(--bg-color);
     font-size: 17px;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* 页面切换动画 */
@@ -46,7 +47,7 @@ body {
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, #007acc, #4fc3f7);
+    background: linear-gradient(90deg, #007BFF, #4fc3f7);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 9999;
@@ -69,13 +70,13 @@ body {
 }
 
 a {
-    color: #333;
+    color: var(--link-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #666;
+    color: var(--link-hover);
 }
 
 /* Container */
@@ -87,14 +88,19 @@ a:hover {
 
 /* Top Navigation */
 .top-navigation {
-    background: white;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 0;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
 }
+
+
 
 .top-navigation .container {
     display: flex;
@@ -109,7 +115,7 @@ a:hover {
 }
 
 .nav-brand-link {
-    color: #333;
+    color: var(--text-color);
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: 600;
@@ -117,8 +123,10 @@ a:hover {
 }
 
 .nav-brand-link:hover {
-    color: #007acc;
+    color: #007BFF;
 }
+
+
 
 .top-nav-list {
     list-style: none;
@@ -137,7 +145,7 @@ a:hover {
     display: flex;
     align-items: center;
     padding: 15px 20px;
-    color: #333;
+    color: var(--text-color);
     font-weight: 500;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -145,16 +153,20 @@ a:hover {
 }
 
 .top-nav-link:hover {
-    color: #007acc;
+    color: #007BFF;
     background: rgba(0, 0, 0, 0.05);
-    border-bottom-color: #007acc;
+    border-bottom-color: #007BFF;
 }
 
+
+
 .top-nav-link.active {
-    color: #007acc;
-    background: rgba(0, 0, 0, 0.1);
-    border-bottom-color: #007acc;
+    color: #007BFF;
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom-color: #007BFF;
 }
+
+
 
 .top-nav-link svg {
     width: 16px;
@@ -203,8 +215,10 @@ a:hover {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     transform: translateY(-50px);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
+
 
 .search-modal.active .search-modal-content {
     transform: translateY(0);
@@ -282,7 +296,7 @@ a:hover {
 }
 
 .search-result-title a:hover {
-    color: #007acc;
+    color: #007BFF;
 }
 
 .search-result-excerpt {
@@ -300,7 +314,7 @@ a:hover {
 }
 
 .search-result-category {
-    background: #007acc;
+    background: #007BFF;
     color: white;
     padding: 2px 8px;
     border-radius: 12px;
@@ -333,6 +347,7 @@ a:hover {
     margin-bottom: 15px;
     color: #333;
     line-height: 1.2;
+    transition: color 0.3s ease;
 }
 
 .site-title a {
@@ -341,7 +356,7 @@ a:hover {
 }
 
 .site-title a:hover {
-    color: #007acc;
+    color: #007BFF;
 }
 
 .site-subtitle {
@@ -350,7 +365,10 @@ a:hover {
     font-weight: 300;
     margin: 0;
     line-height: 1.3;
+    transition: color 0.3s ease;
 }
+
+
 
 
 
@@ -370,7 +388,10 @@ a:hover {
     font-weight: 600;
     margin-bottom: 40px;
     color: #333;
+    transition: color 0.3s ease;
 }
+
+
 
 /* Post Items */
 .post-item {
@@ -392,20 +413,22 @@ a:hover {
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #007acc, transparent);
+    background: linear-gradient(90deg, transparent, #007BFF, transparent);
     transition: left 0.6s ease;
 }
 
 .post-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    border-color: #007acc;
+    border-color: #007BFF;
     background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
 }
 
 .post-item:hover::before {
     left: 100%;
 }
+
+
 
 @keyframes fadeInUp {
     from {
@@ -491,7 +514,7 @@ a:hover {
 }
 
 .post-link:hover {
-    background: linear-gradient(135deg, #007acc 0%, #0056b3 100%);
+    background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -535,6 +558,8 @@ a:hover {
     background: linear-gradient(to right, transparent, #f0f8ff);
 }
 
+
+
 .read-more {
     color: #666;
     font-weight: 500;
@@ -554,6 +579,7 @@ a:hover {
     margin-top: 50px;
     padding-top: 30px;
     border-top: 1px solid #eee;
+    transition: border-color 0.3s ease;
 }
 
 .pagination-link {
@@ -574,7 +600,10 @@ a:hover {
 .pagination-info {
     color: #888;
     font-size: 0.9rem;
+    transition: color 0.3s ease;
 }
+
+
 
 /* Post Content */
 .post-content {
@@ -819,33 +848,113 @@ a:hover {
 
 /* Footer */
 .footer {
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--footer-border);
     padding: 40px 0;
-    text-align: center;
-    color: #888;
+    background-color: var(--footer-bg);
+    color: var(--text-muted);
     font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
 .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-.social-links {
-    display: flex;
-    gap: 20px;
+.footer-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 40px;
 }
 
-.social-link {
-    color: #888;
-    font-weight: 500;
+.footer-column-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 20px;
     transition: color 0.3s ease;
 }
 
-.social-link:hover {
-    color: #333;
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-link {
+    color: var(--text-secondary);
+    font-weight: 400;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: var(--link-hover);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border-light);
+    padding-top: 30px;
+    text-align: left;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-copyright,
+.footer-powered {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.footer-hexo-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-hexo-link:hover {
+    color: var(--link-hover);
+}
+
+.footer-quote {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 15px 0 25px 0;
+    font-size: 0.9rem;
+}
+
+
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .footer-columns {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: left;
+    }
+    
+    .footer-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .theme-switcher {
+        transform: scale(0.9);
+    }
 }
 
 /* Archive Styles */
@@ -868,7 +977,10 @@ a:hover {
     color: #333;
     border-bottom: 2px solid #eee;
     padding-bottom: 10px;
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
+
+
 
 .year-posts {
     margin-left: 20px;
@@ -943,7 +1055,10 @@ a:hover {
     margin-bottom: 40px;
     padding-bottom: 30px;
     border-bottom: 1px solid #eee;
+    transition: border-color 0.3s ease;
 }
+
+
 
 .category-item:last-child {
     border-bottom: none;
